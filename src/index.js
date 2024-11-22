@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// src/index.js или src/App.js
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+// Ваш публичный ключ Stripe
+const stripePromise = loadStripe('pk_test_51QNdUbKPvG8nj9kfdGDbb2FJ64NC0g4owZxWHHLuTrTy8yhrWDOgHsZyhUdJzdYdxXKxwFFv6nFbXtTpTZzp5pH900QFyb00Bp');
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <Elements stripe={stripePromise}>
+          <App />
+      </Elements>
   </React.StrictMode>
 );
 
